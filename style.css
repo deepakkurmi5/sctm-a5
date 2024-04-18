@@ -1,0 +1,346 @@
+/* font setting css */
+@font-face {
+  font-family: __CeraRoundPro_wq0;
+  src: url("fonts/Ceraround-Proregular.otf") format("OpenType");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: __CeraRoundPro_wq0;
+  src: url("fonts/Ceraround-Promedium.otf") format("OpenType");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: __CeraRoundPro_wq0;
+  src: url("fonts/Ceraround-Probold.otf") format("OpenType");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: __CeraRoundPro_FallBack_wq0;
+  src: local("Arial");
+  line-gap-override: 0%;
+  ascent-override: 110%;
+  descent-override: 30%;
+}
+
+/* Global variables to use in properties */
+:root {
+  --body-bg: black;
+  --font-family: __CeraRoundPro_wq0, __CeraRoundPro_FallBack_wq0;
+
+  /* text color variables */
+  --primary-text: rgb(244, 244, 244);
+  --secondary-text: rgb(87, 87, 87);
+  --helper-text: rgb(68, 157, 240);
+
+  /* colors variables */
+  --white: white;
+  --black: black;
+  --orange: #ff6821;
+
+  --container-lrp-xl: 2rem;
+}
+
+/* basic css rules for elements */
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: var(--font-family);
+}
+
+/* As we know css by default (1rem = 16px). So inheriting to 1rem = 10px */
+/* rem unit using because evey child element font-size is related to root element */
+/* so once we change to root element it reflact to all child elements */
+/* It is easy to manage font-szie in multiple devices */
+
+html {
+  font-size: 62.5%; /* 1rem = 10px */
+}
+
+body {
+  width: 100%;
+  height: 100%;
+  scroll-behavior: smooth;
+  background: var(--body-bg);
+  cursor: url("images/cursor1.png"), auto;
+  font-feature-settings: "ss01" on;
+  -webkit-font-feature-settings: "ss01" on;
+  -moz-font-feature-settings: "ss01" on;
+}
+
+:is(a, p, li) {
+  font-size: 1.5em;
+}
+
+:is(input, textarea, .input) {
+  display: inline-block;
+}
+
+ul {
+  list-style-type: none;
+}
+
+a {
+  text-decoration: none;
+  color: rgb(19, 93, 205);
+  & :hover {
+    color: black;
+    transition: 0.3s;
+  }
+}
+
+figcaption {
+  font-size: 0.85rem;
+  color: rgb(87, 87, 87);
+}
+
+img {
+  max-width: 100%;
+}
+
+h1 {
+  font-size: 2.5rem;
+}
+
+h2 {
+  font-size: 1.4rem;
+}
+
+h3 {
+  margin-left: 1%;
+}
+
+h4 {
+  font-size: 1.25rem;
+}
+
+/* layout css rules to create structure of web */
+
+.container {
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: 6rem var(--container-lrp-xl);
+}
+
+.flex {
+  display: flex;
+}
+
+.flex-column {
+  flex-direction: column;
+}
+
+.flex-row {
+  flex-direction: row;
+}
+
+/* module css rules to reuse css class in elements */
+
+/* screen loader css */
+.screen-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 1100;
+  background-color: rgba(0, 0, 0, 1);
+  transition: opacity 0.75s, visibility 0.75s;
+  -webkit-transition: opacity 0.75s, visibility 0.75s;
+  -moz-transition: opacity 0.75s, visibility 0.75s;
+  -ms-transition: opacity 0.75s, visibility 0.75s;
+  -o-transition: opacity 0.75s, visibility 0.75s;
+
+  & .loader-logo {
+    & .top {
+      font-size: 2rem;
+      font-weight: 300;
+      color: var(--white);
+    }
+    & .top:after {
+      content: "\00a9";
+      font-size: 10px;
+      position: relative;
+      top: -5px;
+      margin-left: 2px;
+    }
+    & .mid {
+      font-size: 46px;
+      font-weight: 700;
+      color: var(--white);
+    }
+    & .mid span {
+      font-size: 22px;
+      display: inline-block;
+      vertical-align: top;
+      color: var(--orange);
+      margin-top: -8px;
+    }
+    & .bottom {
+      font-size: 30px;
+      font-weight: 300;
+      line-height: 30px;
+      margin-left: 5px;
+      color: var(--white);
+      text-align: center;
+    }
+  }
+
+  & .screen-loader {
+    margin-top: 2rem;
+    width: 150px;
+    height: 1.7rem;
+    border: 2px solid #b2b2b2;
+    border-radius: 7px;
+    padding: 2px 1px;
+    overflow: hidden;
+
+    & .box {
+      width: 9px;
+      height: 100%;
+      background: linear-gradient(
+        to bottom,
+        #2838c7 0%,
+        #5979ef 17%,
+        #869ef3 32%,
+        #869ef3 45%,
+        #5979ef 59%,
+        #2838c7 100%
+      );
+      display: inline-block;
+      margin-right: 2px;
+      animation: loader 2s infinite;
+      animation-timing-function: linear;
+    }
+  }
+}
+
+.loader-hidden {
+  opacity: 0;
+  visibility: hidden;
+}
+
+@keyframes loader {
+  0% {
+    transform: translate(-30px);
+  }
+  100% {
+    transform: translate(150px);
+  }
+}
+
+/* header css  */
+.header .brand-logo {
+  text-align: center;
+}
+.header .brand-logo a {
+  color: var(--helper-text);
+}
+
+.header .container {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  justify-content: center;
+  padding: 2rem var(--container-lrp-xl);
+}
+
+.header .navbar ul {
+  gap: 2rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.header .navbar li a {
+  text-align: center;
+  display: inline-block;
+  width: 160px;
+  padding: 1rem;
+  font-size: 2rem;
+  background-color: var(--helper-text);
+  color: var(--primary-text);
+  border-radius: 6px;
+  -webkit-border-radius: 6px;
+  -moz-border-radius: 6px;
+  -ms-border-radius: 6px;
+  -o-border-radius: 6px;
+}
+.header .navbar li .current {
+  background-color: var(--primary-text);
+  color: var(--helper-text);
+}
+
+/* ======================================
+Post Section css
+====================================== */
+
+.post-section {
+  position: sticky;
+  top: 0px;
+  filter: blue(1px);
+  -webkit-filter: blue(1px);
+
+  & .container {
+    padding-left: 1.5rem;
+    padding: 2rem var(--container-lrp-xl);
+    background-image: linear-gradient(
+      to right,
+      #ffe0ed,
+      #f6e4f5,
+      #efe9f8,
+      #eaecf8,
+      #eaeff5
+    );
+
+    .post-heading {
+      font-size: 2.5rem;
+    }
+
+    ul {
+      list-style-type: circle;
+      padding-left: 2rem;
+
+      li {
+        margin-block: 1rem;
+      }
+
+      & li,
+      li a {
+        font-size: 1.6rem;
+      }
+    }
+  }
+}
+
+/* home page css for main-section  */
+.main-section {
+  height: 100vh;
+  width: 100%;
+  background: url("images/desktop.png") no-repeat fixed;
+  background-position: center;
+  background-size: cover;
+}
+
+.main-section .flex {
+  gap: 2rem;
+  justify-content: center;
+}
+
+.main-section .folder {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 1.7rem;
+}
