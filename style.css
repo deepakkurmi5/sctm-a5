@@ -112,12 +112,13 @@ h2 {
   font-size: 1.4rem;
 }
 
-h3 {
-  margin-left: 1%;
-}
-
-h4 {
-  font-size: 1.25rem;
+@media (width <= 600px) {
+  html {
+    font-size: 59.375%; /* 9.5px */
+  }
+  h1 {
+    font-size: 2.2rem;
+  }
 }
 
 /* layout css rules to create structure of web */
@@ -331,6 +332,10 @@ Post Section css
   background-size: cover;
 }
 
+.main-section .container {
+  padding: 2rem var(--container-lrp-xl);
+}
+
 .main-section .flex {
   gap: 2rem;
   justify-content: center;
@@ -343,4 +348,21 @@ Post Section css
   text-decoration: none;
   font-weight: 500;
   font-size: 1.7rem;
+}
+
+.main-section .media-header {
+  justify-content: flex-end;
+}
+
+.main-section .media-header ul img {
+  height: 4rem;
+  width: 4rem;
+  object-fit: contain;
+}
+
+@media (width <= 600px) {
+  .main-section .media-header {
+    justify-content: center;
+    padding-bottom: 2rem;
+  }
 }
